@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bookwaves</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="navbar-left">
+        <a href="./index.html" class="navbar-link">© 2024 Bookwaves</a>
+        <span>·</span>
+        <a href="./legal/terms.html" class="navbar-link" target="_blank"
+          >Terms</a
+        >
+        <span>·</span>
+        <a href="./legal/privacy.html" class="navbar-link" target="_blank"
+          >Privacy</a
+        >
+      </div>
+      <div class="navbar-right">
+        <a href="#" class="navbar-icon"
+          ><img src="./assets/email.png" alt="Email Icon" height="20px"
+        /></a>
+        <a href="#" class="navbar-icon"
+          ><img src="./assets/github.png" alt="GitHub Icon" height="20px"
+        /></a>
+      </div>
+    </nav>
+
+    <!-- Header Section -->
+    <div class="header">
+      <h1>AI-Powered Library</h1>
+      <p>Generate dynamic programming docs</p>
+    </div>
+
+    <!-- Command Input -->
+    <input
+      type="text"
+      id="commandInput"
+      placeholder="Type '/library' to see options..."
+      autocomplete="off"
+    />
+
+    <!-- Command Options Container -->
+    <div id="commandOptionsContainer" class="hidden">
+      <div class="command-search-container">
+        <div class="command-search">
+          <input type="text" id="searchInput" placeholder="Search..." />
+        </div>
+        <button id="closeButton" class="hidden">Close</button>
+      </div>
+      <ul id="commandOptions"></ul>
+    </div>
+
+    <!-- Tree View -->
+    <ul id="treeView" class="tree hidden"></ul>
+
+    <!-- Data and Script Files -->
+    <script src="data/htmlData.js"></script>
+    <script src="data/cssData.js"></script>
+    <script src="data/jsData.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

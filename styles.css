@@ -1,0 +1,342 @@
+/* Base Styling */
+body {
+  padding-top: 60px; /* Adjust for fixed navbar height */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  background-color: #fafafa;
+  color: #333;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20px;
+  line-height: 1.6;
+}
+
+/* Header Styling */
+.header {
+  margin-top: 100px; /* Space below navbar */
+}
+
+.header h1 {
+  font-size: 40px;
+  color: #333;
+  margin: 0;
+  font-weight: 700;
+  text-align: center;
+}
+
+.header p {
+  font-size: 17px;
+  color: #555;
+  letter-spacing: 2px;
+  margin: 0 0 20px;
+  text-align: center;
+  max-width: 600px;
+  line-height: 1.8;
+}
+
+/* Form and List Elements inherit body font */
+input,
+button,
+ul {
+  font-family: inherit;
+}
+
+/* Remove default focus outlines */
+input:focus,
+button:focus {
+  outline: none;
+}
+
+/* Command Input */
+#commandInput {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px 15px;
+  font-size: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 20px;
+}
+
+#commandInput:focus {
+  border-color: #007aff;
+  box-shadow: 0 0 8px rgba(0, 122, 255, 0.3); /* Focus state with blue border and shadow */
+}
+
+/* Command Options Container */
+#commandOptionsContainer {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  max-width: 400px;
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px; /* Space between options and tree view */
+}
+
+/* Search Bar and Close Button Container */
+.command-search-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 16px;
+  width: 100%; /* Full width container */
+}
+
+.command-search {
+  flex-grow: 1; /* Allow the search bar to take up available space */
+}
+
+.command-search input {
+  width: 100%; /* Full width input */
+  padding: 7px;
+  font-size: 15px;
+  border: 1px solid #d1d1d6;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  box-sizing: border-box; /* Ensure padding is included in width */
+}
+
+.command-search input:focus {
+  background-color: #fff;
+  border-color: #007aff; /* Blue border on focus */
+}
+
+/* Close Button Styling */
+#closeButton {
+  padding: 7px 20px;
+  font-size: 15px;
+  background-color: #ff3333;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-left: 10px; /* Space between search bar and button */
+  transition: background-color 0.3s ease;
+  flex-shrink: 0; /* Prevent the button from shrinking */
+}
+
+#closeButton:hover {
+  background-color: #cc0000; /* Darker red on hover */
+}
+
+/* Command Options List */
+#commandOptions {
+  list-style-type: none; /* Remove default list markers */
+  margin: 0;
+  padding: 0;
+}
+
+#commandOptions li {
+  font-size: 15px;
+  padding: 5px;
+  color: #007aff;
+  cursor: pointer;
+  border-bottom: 1px solid #ddd;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition on hover */
+}
+
+#commandOptions li:last-child {
+  border-bottom: none; /* Remove bottom border from last item */
+}
+
+#commandOptions li:hover,
+#commandOptions li.selected {
+  background-color: #007aff;
+  color: #fff;
+  border-radius: 0 0 8px 8px; /* Rounded corners for selected item */
+}
+
+/* Tree View Container */
+#treeView {
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+/* Utility class to hide elements */
+.hidden {
+  display: none;
+}
+
+/* Tree Structure Styling */
+.tree {
+  list-style-type: none; /* Remove default list markers */
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  padding: 20px;
+}
+
+.tree li {
+  line-height: 1.8;
+  padding-left: 20px;
+  position: relative;
+  font-size: 14px;
+  color: #555;
+}
+
+.tree li::before,
+.tree li::after {
+  border-color: #ddd; /* Light gray lines for structure */
+}
+
+.tree li::before {
+  content: "";
+  border-left: 1px solid #ddd; /* Vertical line */
+  height: 100%;
+}
+
+.tree li:last-child::before {
+  height: 1.5em; /* Limit vertical line height for the last node */
+}
+
+.tree li:last-child:only-child::before {
+  display: none; /* Hide the vertical line for the last leaf */
+}
+
+.tree li:last-child::after {
+  display: none; /* Remove the horizontal line for the last child */
+}
+
+/* Caret (toggle) Styling for Collapsible Tree Nodes */
+.caret {
+  cursor: pointer;
+  user-select: none;
+  display: inline-block;
+  position: relative;
+  padding-left: 15px; /* Align caret with the lines */
+  color: #007bff; /* Blue caret */
+}
+
+.caret::before {
+  content: "\25B6"; /* Right-pointing triangle */
+  color: inherit;
+  display: inline-block;
+  margin-right: 6px;
+  transition: transform 0.3s ease; /* Smooth rotation */
+}
+
+.caret:hover {
+  color: #0056b3; /* Darker blue on hover */
+}
+
+.caret-down::before {
+  transform: rotate(90deg); /* Rotate triangle when expanded */
+}
+
+/* Nested Tree Levels */
+.nested {
+  display: none; /* Initially hidden */
+  margin-left: 20px;
+  border-left: 1px solid #ddd; /* Subtle light gray border */
+  padding-left: 15px;
+}
+
+/* Active class to show nested items */
+.active {
+  display: block;
+}
+
+ul.tree,
+ul.nested {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+/* Level-specific Borders */
+.nested.level-1 {
+  border-left: 1px solid #007bff; /* Blue border for first level */
+}
+
+.nested.level-2 {
+  border-left: 1px solid #ff5733; /* Orange border for second level */
+}
+
+.nested.level-3 {
+  border-left: 1px solid #28a745; /* Green border for third level */
+}
+
+.nested.level-4 {
+  border-left: 1px solid #6f42c1; /* Purple border for fourth level */
+}
+
+/* Additional Levels if Needed */
+.nested.level-5 {
+  border-left: 1px solid #17a2b8; /* Teal border for fifth level */
+}
+
+.nested.level-6 {
+  border-left: 1px solid #e83e8c; /* Pink border for sixth level */
+}
+
+/* Navbar Styling */
+.navbar {
+  width: 100%;
+  background-color: #fafafa; /* Match the body background color */
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000; /* Ensure navbar stays on top */
+  border-bottom: 1px solid #ddd; /* Subtle bottom border */
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-link {
+  color: #333;
+  text-decoration: none;
+  margin-right: 20px;
+  font-size: 14px;
+  transition: color 0.3s ease;
+  line-height: 24px; /* Align text vertically with icons */
+}
+
+.navbar-link:hover {
+  color: #007aff;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-icon img {
+  width: 24px;
+  height: 24px;
+  margin-left: 20px;
+  transition: opacity 0.3s ease;
+  display: inline-block;
+  vertical-align: middle; /* Align images with text vertically */
+}
+
+.navbar-icon img:hover {
+  opacity: 0.7; /* Slight fade on hover */
+}
+
+.navbar-left > span {
+  margin: 0 10px;
+}
+
+.navbar-left > a {
+  margin: 0;
+}
